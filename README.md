@@ -1,9 +1,10 @@
 # alpine-java-wkhtmltopdf
 
-This Docker image contains a working wkhtmltopdf and java installation. The purpose is to keep it as small as possible while delivering all functions.
-
+[![Build Status](https://travis-ci.org/ElfoLiNk/alpine-java-wkhtmltopdf.svg?branch=master)](https://travis-ci.org/ElfoLiNk/alpine-java-wkhtmltopdf)
 [![Docker Stars](https://img.shields.io/docker/stars/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
+
+This Docker image contains a working wkhtmltopdf and java installation. The purpose is to keep it as small as possible while delivering all functions.
 
 ## Use as baseimage
 
