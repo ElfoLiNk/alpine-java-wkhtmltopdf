@@ -141,13 +141,13 @@ RUN apk add --no-cache \
   -xrender \
   -fontconfig \
   -D ENABLE_VIDEO=0 \
-&& make --jobs $(($NB_CORES*2)) --silent \
+&& make --jobs $(($NB_CORES*2)) --silent 1>/dev/null \
 && make install \
 
 # Install wkhtmltopdf
 && cd /tmp/wkhtmltopdf \
 && qmake \
-&& make --jobs $(($NB_CORES*2)) --silent \
+&& make --jobs $(($NB_CORES*2)) --silent 1>/dev/null \
 && make install \
 && make clean \
 && make distclean \
