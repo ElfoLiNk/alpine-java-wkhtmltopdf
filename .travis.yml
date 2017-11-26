@@ -9,7 +9,7 @@ addons:
     - poppler-utils
 
 before_install:
-  - travis_wait docker build -t elfolink/alpine-java-wkhtmltopdf .
+  - travis_wait 120 docker build -t elfolink/alpine-java-wkhtmltopdf .
 
 script:
   - docker run --rm elfolink/alpine-java-wkhtmltopdf wkhtmltopdf -q google.com - - > test.pdf 
