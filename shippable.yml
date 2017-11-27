@@ -1,0 +1,20 @@
+env:
+  global:
+    - DOCKER_REPO=alpine-java-wkhtmltopdf
+    - DOCKER_ACC=elfolink
+
+build:
+  pre_ci:
+    - if [ "$BRANCH" == "master" ]; then docker build -t $DOCKER_ACC/$DOCKER_REPO -t $DOCKER_ACC/$DOCKER_REPO:b$BUILD_NUMBER .; fi
+    - if [ "$BRANCH" == "3.6" ]; then docker build -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH.b$BUILD_NUMBER .; fi
+  ci:
+    - if [ "$BRANCH" == "master" ]; then docker run --rm $DOCKER_ACC/$DOCKER_REPO wkhtmltopdf --version ; fi
+    - if [ "$BRANCH" == "3.6" ]; then docker run --rm $DOCKER_ACC/$DOCKER_REPO:$BRANCH wkhtmltopdf --version .; fi
+  post_ci:
+    - if [ "$BRANCH" == "master" ]; then docker push $DOCKER_ACC/$DOCKER_REPO:b$BUILD_NUMBER && docker push $DOCKER_ACC/$DOCKER_REPO ; fi
+    - if [ "$BRANCH" == "3.6" ]; then docker push $DOCKER_ACC/$DOCKER_REPO:$BRANCH && docker push $DOCKER_ACC/$DOCKER_REPO:$BRANCH.b$BUILD_NUMBER ; fi
+
+integrations:
+  hub:
+    - integrationName: dockerHubIntegration
+      type: dockerRegistryLogin
