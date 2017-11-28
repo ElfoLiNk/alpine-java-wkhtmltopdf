@@ -1,6 +1,6 @@
 # alpine-java-wkhtmltopdf
 
-[![Build Status](https://travis-ci.org/ElfoLiNk/alpine-java-wkhtmltopdf.svg?branch=master)](https://travis-ci.org/ElfoLiNk/alpine-java-wkhtmltopdf)
+[![Run Status](https://api.shippable.com/projects/5a1c82451e6eda070008cbbb/badge?branch=master)](https://app.shippable.com/github/ElfoLiNk/alpine-java-wkhtmltopdf)
 [![Docker Stars](https://img.shields.io/docker/stars/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
 
@@ -13,6 +13,14 @@ This image can be used as a base for your project.
 ```yaml
 FROM elfolink/alpine-java-wkhtmltopdf
 ```
+
+## Tag Versions
+
+| Tag             | latest        | 3.6         |
+| :---            | :---:         | :---:       |
+| Alpine          | edge          | 3.6         |
+| Java            | 1.8.151.12    | 1.8.131.11  |
+| Wkhtmltopdf     | 0.12.5.dev    | 0.12.5.dev  |
 
 ## Contribute
 
