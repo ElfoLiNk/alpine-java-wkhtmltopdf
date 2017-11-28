@@ -1,5 +1,5 @@
 # Image
-FROM alpine:edge
+FROM alpine:3.6
 
 # Copy patches
 RUN mkdir -p /tmp/patches
