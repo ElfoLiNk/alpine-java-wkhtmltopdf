@@ -5,8 +5,8 @@ env:
 
 build:
   pre_ci:
-    - if [ "$BRANCH" == "master" ]; then docker build -t $DOCKER_ACC/$DOCKER_REPO -t $DOCKER_ACC/$DOCKER_REPO:b$BUILD_NUMBER .; fi
-    - if [ "$BRANCH" == "3.6" ]; then docker build -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH.b$BUILD_NUMBER .; fi
+    - if [ "$BRANCH" == "master" ]; then docker build --build-arg VCS_REF=`git rev-parse --short HEAD` -t $DOCKER_ACC/$DOCKER_REPO -t $DOCKER_ACC/$DOCKER_REPO:b$BUILD_NUMBER .; fi
+    - if [ "$BRANCH" == "3.6" ]; then docker build --build-arg VCS_REF=`git rev-parse --short HEAD` -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH -t $DOCKER_ACC/$DOCKER_REPO:$BRANCH.b$BUILD_NUMBER .; fi
   ci:
     - if [ "$BRANCH" == "master" ]; then docker run --rm $DOCKER_ACC/$DOCKER_REPO wkhtmltopdf --version ; fi
     - if [ "$BRANCH" == "3.6" ]; then docker run --rm $DOCKER_ACC/$DOCKER_REPO:$BRANCH wkhtmltopdf --version .; fi
