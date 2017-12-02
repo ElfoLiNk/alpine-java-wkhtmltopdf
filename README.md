@@ -16,11 +16,11 @@ FROM elfolink/alpine-java-wkhtmltopdf
 
 ## Tag Versions
 
-| Tag             | latest        | 3.6         |
-| :---            | :---:         | :---:       |
-| Alpine          | edge          | 3.6         |
-| Java            | 1.8.151.12    | 1.8.131.11  |
-| Wkhtmltopdf     | 0.12.5.dev    | 0.12.5.dev  |
+| Tag             | latest        | 3.7         | 3.6         |
+| :---            | :---:         | :---:       | :---:       |
+| Alpine          | edge          | 3.7         | 3.6         |
+| Java            | 1.8.151.12    | 1.8.151.12  | 1.8.131.11  |
+| Wkhtmltopdf     | 0.12.5.dev    | 0.12.5.dev  | 0.12.5.dev  |
 
 ## Contribute
 
@@ -33,3 +33,4 @@ Keep in mind that the build process of this container takes some (a lot of) time
 Based upon the following repos:
 - https://github.com/Surnet/alpine-node-wkhtmltopdf
 - https://github.com/alloylab/Docker-Alpine-wkhtmltopdf
+
