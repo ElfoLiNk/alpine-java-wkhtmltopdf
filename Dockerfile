@@ -13,7 +13,7 @@ COPY conf/* /tmp/patches/
 # Install needed packages
 RUN apk add --no-cache \
   bash \
-  openjdk8 \
+  openjdk8-jre \
   jq \
   curl \
   openssl \
