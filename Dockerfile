@@ -1,5 +1,5 @@
 # Image
-FROM alpine:3.8
+FROM alpine:3.10
 
 ARG VCS_REF
 
