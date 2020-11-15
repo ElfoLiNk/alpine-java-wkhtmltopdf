@@ -16,11 +16,11 @@ FROM elfolink/alpine-java-wkhtmltopdf
 
 ## Tag Versions
 
-| Tag             | latest        | 3.7         | 3.6         |
-| :---            | :---:         | :---:       | :---:       |
-| Alpine          | edge          | 3.7         | 3.6         |
-| Java            | 1.8.151.12    | 1.8.222.10  | 1.8.131.11  |
-| Wkhtmltopdf     | 0.12.5.dev    | 0.12.7-dev  | 0.12.5.dev  |
+| Tag             | 3.8        |
+| :---            | :---:      |
+| Alpine          | 3.8         |
+| Java            | 1.8.222.10  |
+| Wkhtmltopdf     | 0.12.7.dev  |
 
 ## Contribute
 
