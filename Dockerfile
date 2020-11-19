@@ -61,7 +61,7 @@ RUN apk add --no-cache \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt4-glibc-2.25.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt4-icu59.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/gcc9-qforeach.patch \
-&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/configure-gcc9.patch \
+&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/configure-gcc.patch \
 \
 # Modify qmake config
 && echo "QMAKE_CXXFLAGS += -std=gnu++98" >> src/3rdparty/javascriptcore/JavaScriptCore/JavaScriptCore.pri \
