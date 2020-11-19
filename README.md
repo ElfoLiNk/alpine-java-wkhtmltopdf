@@ -16,9 +16,9 @@ FROM elfolink/alpine-java-wkhtmltopdf
 
 ## Tag Versions
 
-| Tag             | 3.9        |
-| :---            | :---:      |
-| Alpine          | 3.9         |
+| Tag             | 3.11        |
+| :---            | :---:       |
+| Alpine          | 3.11        |
 | Java            | 1.8.252.09  |
 | Wkhtmltopdf     | 0.12.7.dev  |
 
