@@ -1,11 +1,6 @@
 # Image
 FROM alpine:3.12
 
-ARG VCS_REF
-
-LABEL org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/ElfoLiNk/alpine-java-wkhtmltopdf"
-
 # Copy patches
 RUN mkdir -p /tmp/patches
 COPY conf/* /tmp/patches/

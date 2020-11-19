@@ -14,6 +14,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
+        name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: elfolink/alpine-java-wkhtmltopdf
+          tag-sha: false
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -32,8 +39,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: true
-          tags: |
-            elfolink/alpine-java-wkhtmltopdf:${GITHUB_REF##*/}
-          build-args: |
-            VCS_REF=`git rev-parse --short HEAD`
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
