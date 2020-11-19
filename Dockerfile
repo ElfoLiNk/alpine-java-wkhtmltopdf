@@ -13,7 +13,7 @@ COPY conf/* /tmp/patches/
 # Install needed packages
 RUN apk add --no-cache \
   bash \
-  openjdk8 \
+  openjdk8-jre \
   jq \
   curl \
   openssl \
@@ -36,12 +36,19 @@ RUN apk add --no-cache \
   gtk+-dev \
   make \
   mesa-dev \
+  msttcorefonts-installer \
   openssl-dev \
   patch \
-
+  fontconfig-dev \
+  freetype-dev \
+\
+# Install microsoft fonts
+&& update-ms-fonts \
+&& fc-cache -f \
+\
 # Download source files
-&& git clone --recursive --depth 1 https://github.com/ElfoLiNk/wkhtmltopdf.git /tmp/wkhtmltopdf \
-
+&& git clone --recursive --depth 1 https://github.com/wkhtmltopdf/wkhtmltopdf.git /tmp/wkhtmltopdf \
+\
 # Apply patches
 && cd /tmp/wkhtmltopdf \
 && patch -i /tmp/patches/wkhtmltopdf-buildconfig.patch \
@@ -49,13 +56,13 @@ RUN apk add --no-cache \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-musl.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-musl-iconv-no-bom.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-recursive-global-mutex.patch \
-&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-font-pixel-size.patch \
-&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/disable-sslv3.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/improve-cups-support.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/moc-boost-workaround.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt4-glibc-2.25.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt4-icu59.patch \
-
+&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/gcc9-qforeach.patch \
+&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/configure-gcc9.patch \
+\
 # Modify qmake config
 && echo "QMAKE_CXXFLAGS += -std=gnu++98" >> src/3rdparty/javascriptcore/JavaScriptCore/JavaScriptCore.pri \
 && echo "QMAKE_CXXFLAGS += -std=gnu++98" >> src/plugins/accessible/qaccessiblebase.pri \
@@ -63,10 +70,10 @@ RUN apk add --no-cache \
 && sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/gcc-base.conf \
 && sed -i "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" mkspecs/common/gcc-base-unix.conf \
 && sed -i "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS}|g" mkspecs/common/gcc-base.conf \
-
+\
 # Prepare optimal build settings
 && NB_CORES=$(grep -c '^processor' /proc/cpuinfo) \
-
+\
 # Install qt
 && ./configure -confirm-license -opensource \
   -prefix /usr \
@@ -148,7 +155,7 @@ RUN apk add --no-cache \
   -D ENABLE_VIDEO=0 \
 && make --jobs $(($NB_CORES*2)) --silent 1>/dev/null \
 && make install \
-
+\
 # Install wkhtmltopdf
 && cd /tmp/wkhtmltopdf \
 && qmake \
@@ -156,13 +163,13 @@ RUN apk add --no-cache \
 && make install \
 && make clean \
 && make distclean \
-
+\
 # Uninstall qt
 && cd /tmp/wkhtmltopdf/qt \
 && make uninstall \
 && make clean \
 && make distclean \
-
+\
 # Clean up when done
 && rm -rf /tmp/* \
 && apk del .build-deps
