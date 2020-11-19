@@ -35,7 +35,7 @@ RUN apk add --no-cache \
   patch \
 
 # Download source files
-&& git clone --recursive --depth 1 https://github.com/ElfoLiNk/wkhtmltopdf.git /tmp/wkhtmltopdf \
+&& git clone --recursive --depth 1 https://github.com/wkhtmltopdf/wkhtmltopdf.git /tmp/wkhtmltopdf \
 
 # Apply patches
 && cd /tmp/wkhtmltopdf \
