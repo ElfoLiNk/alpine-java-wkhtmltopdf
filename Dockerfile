@@ -44,7 +44,6 @@ RUN apk add --no-cache \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-musl.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-musl-iconv-no-bom.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-recursive-global-mutex.patch \
-&& patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt-font-pixel-size.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/improve-cups-support.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/moc-boost-workaround.patch \
 && patch -p1 --ignore-whitespace -F4 -i /tmp/patches/qt4-glibc-2.25.patch \
