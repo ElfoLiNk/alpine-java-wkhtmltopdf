@@ -1,6 +1,6 @@
 # alpine-java-wkhtmltopdf
 
-[![Run Status](https://api.shippable.com/projects/5a1c82451e6eda070008cbbb/badge?branch=master)](https://app.shippable.com/github/ElfoLiNk/alpine-java-wkhtmltopdf)
+[![Run Status](https://github.com/ElfoLiNk/alpine-java-wkhtmltopdf/workflows/ci/badge.svg?branch=3.11)
 [![Docker Stars](https://img.shields.io/docker/stars/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/elfolink/alpine-java-wkhtmltopdf.svg)](https://hub.docker.com/r/elfolink/alpine-java-wkhtmltopdf/)
 
@@ -11,7 +11,7 @@ This Docker image contains a working wkhtmltopdf and java installation. The purp
 This image can be used as a base for your project.
 
 ```yaml
-FROM elfolink/alpine-java-wkhtmltopdf
+FROM elfolink/alpine-java-wkhtmltopdf:3.11
 ```
 
 ## Tag Versions
