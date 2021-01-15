@@ -11,15 +11,15 @@ This Docker image contains a working wkhtmltopdf and java installation. The purp
 This image can be used as a base for your project.
 
 ```yaml
-FROM elfolink/alpine-java-wkhtmltopdf
+FROM elfolink/alpine-java-wkhtmltopdf:3.13
 ```
 
 ## Tag Versions
 
-| Tag             | 3.12        |
+| Tag             | 3.13        |
 | :---            | :---:       |
-| Alpine          | 3.12        |
-| Java            | 1.8.252.09  |
+| Alpine          | 3.13        |
+| Java            | 1.8.272.10  |
 | Wkhtmltopdf     | 0.12.7.dev  |
 
 ## Contribute
